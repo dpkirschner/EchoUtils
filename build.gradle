@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    flatDir {
+    	dirs 'lib'
+    }
+}
+
+dependencies {
+    compile (
+    	'commons-collections:commons-collections:3.2'
+    	, 'com.amazonaws:aws-lambda-java-core:1.0.0'
+        , 'com.amazonaws:aws-lambda-java-events:1.0.0'
+        , 'com.amazonaws:alexa-skills-kit:1.1'
+        , 'log4j:log4j:1.2.17'
+        , 'org.slf4j:slf4j-api:1.7.10'
+        , 'org.apache.commons:commons-lang3:3.2'
+        , 'org.apache.directory.studio:org.apache.commons.io:2.4'
+        , 'org.projectlombok:lombok:1.16.6'
+        , 'com.google.guava:guava:18.0'
+        , 'org.projectlombok:lombok:1.16.6'
+    )
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+
+task fatJar(type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+build.dependsOn fatJar
