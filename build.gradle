@@ -54,4 +54,4 @@ task fatJar(type: Jar) {
     with jar
 }
 
-build.dependsOn fatJar
+build.dependsOn test, fatJar
