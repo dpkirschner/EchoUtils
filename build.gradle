@@ -33,9 +33,6 @@ dependencies {
     )
     testCompile (
     	'junit:junit:4.+'
-    	, 'org.powermock:powermock-module-junit4:1.6.3'
-    	, 'org.powermock:powermock-api-easymock:1.6.3'
-    	, 'org.easymock:easymock:3.4'
     )
 }
 
