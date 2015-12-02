@@ -21,8 +21,6 @@ repositories {
 dependencies {
     compile (
     	'commons-collections:commons-collections:3.2'
-    	, 'com.amazonaws:aws-lambda-java-core:1.0.0'
-        , 'com.amazonaws:aws-lambda-java-events:1.0.0'
         , 'com.amazonaws:alexa-skills-kit:1.1'
         , 'log4j:log4j:1.2.17'
         , 'org.slf4j:slf4j-api:1.7.10'
